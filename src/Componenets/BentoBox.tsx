@@ -53,14 +53,12 @@ const BentoBox = ({ title, infoSections }: Props) => {
       {infoSections &&
         infoSections.map(({ title: sectionTitle, content, link }, index) => (
           <motion.div variants={contentVariant} className="p-3" key={index}>
-            {sectionTitle && (
+            {sectionTitle && link ? (
+              <AnimatedBtn link={link} title={sectionTitle} />
+            ) : (
               <h2 className="text-lg font-bold">{sectionTitle}</h2>
             )}
-            {link ? (
-              <AnimatedBtn link={link} title={infoSections.title} />
-            ) : (
-              <p className="whitespace-pre-wrap">{content}</p>
-            )}
+            <p className="whitespace-pre-wrap">{content}</p>
           </motion.div>
         ))}
     </motion.div>
